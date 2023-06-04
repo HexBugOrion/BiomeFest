@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
@@ -15,10 +16,9 @@ import static net.timeworndevs.biomefest.biome.BFBiomes.addBasicFeatures;
 public class SubBorealForestBiome {
 
     public static Biome create(FabricDynamicRegistryProvider.Entries entries){
-        return new Biome.Builder().generationSettings(createGenerationSettings(entries)).precipitation(true).spawnSettings().temperature(0.7f).downfall(0.6f).build();
+        return new Biome.Builder().generationSettings(createGenerationSettings(entries)).precipitation(true).spawnSettings(createSpawnSettings()).temperature(0.7f).downfall(0.6f).effects(BFBiomes.createDefaultBiomeEffects().grassColor(0x0eb25d).foliageColor(0x0eb25d).build()).build();
 
     }
-
 
     private static GenerationSettings createGenerationSettings(FabricDynamicRegistryProvider.Entries entries){
         GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(entries.placedFeatures(), entries.configuredCarvers());

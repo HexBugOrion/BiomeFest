@@ -1,19 +1,33 @@
 package net.timeworndevs.biomefest.biome;
 
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.timeworndevs.biomefest.Main;
 
-@SuppressWarnings("UnstableApiUsage") //I saw this in Traverse, I think it may be useful here.
+import java.util.List;
+
+
 public class BFBiomes {
 
     //A lot of this is Traverse code, borrowed with permission from the devs.
-    public static void biomes(){
+    public static final RegistryKey<Biome> SUB_BOREAL_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Main.MODID, "sub_boreal_forest"));
 
+    public static final List<RegistryKey<Biome>> BIOMES = List.of(
+            SUB_BOREAL_FOREST
+    );
+
+    public static void populate(FabricDynamicRegistryProvider.Entries entries){
+        entries.add(SUB_BOREAL_FOREST, SubBorealForestBiome.create(entries));
     }
 
     public static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings){
@@ -25,12 +39,12 @@ public class BFBiomes {
         DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
     }
 
-    public static SpawnSettings createDefaultSpawnSettings() {
+    public static SpawnSettings.Builder createDefaultSpawnSettings() {
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
         addCreatureSpawnEntries(spawnSettings);
         addAmbientSpawnEntries(spawnSettings);
         addDefaultMonsterSpawnEntries(spawnSettings);
-        return spawnSettings.build();
+        return spawnSettings;
     }
 
     public static void addCreatureSpawnEntries(SpawnSettings.Builder builder){
