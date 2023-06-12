@@ -5,18 +5,17 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.TreePlacedFeatures;
+import net.minecraft.world.gen.feature.*;
+import net.timeworndevs.biomefest.features.BFBiomeFeatures;
 
 import static net.timeworndevs.biomefest.biome.BFBiomes.addBasicFeatures;
 
 public class SubBorealForestBiome {
 
     public static Biome create(FabricDynamicRegistryProvider.Entries entries){
-        return new Biome.Builder().generationSettings(createGenerationSettings(entries)).precipitation(true).spawnSettings(createSpawnSettings()).temperature(0.7f).downfall(0.6f).effects(BFBiomes.createDefaultBiomeEffects().grassColor(0x0eb25d).foliageColor(0x0eb25d).build()).build();
+        return new Biome.Builder().generationSettings(createGenerationSettings(entries)).precipitation(true).spawnSettings(createSpawnSettings()).temperature(0.7f).downfall(0.6f).effects(BFBiomes.createDefaultBiomeEffects().build()).build();
 
     }
 
@@ -25,10 +24,10 @@ public class SubBorealForestBiome {
         addBasicFeatures(builder);
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref(TreePlacedFeatures.SPRUCE_CHECKED));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref(TreePlacedFeatures.OAK_CHECKED));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref(TreePlacedFeatures.FANCY_OAK_CHECKED));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref(TreePlacedFeatures.BIRCH_CHECKED));
+        //builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TreePlacedFeatures.BIRCH_CHECKED);
+        //builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TreePlacedFeatures.SPRUCE_CHECKED);
+        BFBiomeFeatures.addSpruceTreesBF(builder);
+        BFBiomeFeatures.addBirchTreesBF(builder);
         DefaultBiomeFeatures.addForestFlowers(builder);
         DefaultBiomeFeatures.addDefaultFlowers(builder);
         DefaultBiomeFeatures.addForestGrass(builder);
