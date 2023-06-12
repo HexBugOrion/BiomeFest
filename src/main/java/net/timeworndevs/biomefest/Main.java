@@ -24,7 +24,7 @@ public class Main implements ModInitializer {
 		LOGGER.info("Blocks Registered");
 
 		LOGGER.info("BiomeRegistry Staring");
-		BiomeRegistry.biomeRegistry();
+		//BiomeRegistry.biomeRegistry();
 		LOGGER.info("Biomes Registered");
 	}
 }

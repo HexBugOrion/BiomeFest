@@ -7,5 +7,6 @@ import net.minecraft.util.Identifier;
 import net.timeworndevs.biomefest.Main;
 
 public class ItemGroupRegistry {
-    public static final ItemGroup BIOMEFEST_GROUP = FabricItemGroup.builder(new Identifier(Main.MODID, "itemgroup")).icon(()-> new ItemStack(BlockRegistry.PINE_LOG)).build();
+    //public static final ItemGroup BIOMEFEST_GROUP = FabricItemGroup.builder(new Identifier(Main.MODID, "itemgroup")).icon(()-> new ItemStack(BlockRegistry.PINE_LOG)).build();
+    //Todo: Add updated ItemGroup
 }

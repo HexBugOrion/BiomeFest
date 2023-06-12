@@ -16,15 +16,26 @@ public class BlockRegistry {
     //blocks and blockItems
 
     //Pine set
-    public static final PillarBlock PINE_LOG = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OAK_TAN).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static final PillarBlock PINE_LOG = new PillarBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+
+    //Fir set
+
     //TBD
 
     public static void blockRegistry(){
-
+        /*
+        Order:
+        Block
+        Item
+        ItemGroup
+         */
         //Pine set
         Registry.register(Registries.BLOCK, new Identifier(Main.MODID, "pine_log"), PINE_LOG);
         Registry.register(Registries.ITEM, new Identifier(Main.MODID, "pine_log"), new BlockItem(PINE_LOG, new Item.Settings()));
-        ItemGroupEvents.modifyEntriesEvent(ItemGroupRegistry.BIOMEFEST_GROUP).register((content)-> content.add(PINE_LOG));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register((content)-> content.add(PINE_LOG));
+
+        //Fir set
+
         //TBD
 
     }
