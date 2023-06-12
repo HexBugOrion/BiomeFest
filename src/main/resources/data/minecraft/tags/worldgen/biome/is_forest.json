@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "biomefest:sub_boreal_forest",
+      "required": false
+    }
+  ]
+}

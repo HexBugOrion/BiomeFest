@@ -42,8 +42,8 @@ loom {
 		datagen {
 			server()
 
-			name = "Datagen"
-			runDir("build/datagen")
+			name = "Data Generation"
+			runDir = "build/datagen"
 
 			vmArg("-Dfabric-api.datagen")
 			vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
