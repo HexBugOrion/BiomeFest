@@ -65,8 +65,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_taiga",
       "minecraft:trees_birch",
+      "minecraft:trees_taiga",
       "minecraft:forest_flowers",
       "minecraft:flower_default",
       "minecraft:patch_grass_forest",

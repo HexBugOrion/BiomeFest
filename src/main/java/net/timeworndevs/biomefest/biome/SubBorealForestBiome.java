@@ -26,8 +26,6 @@ public class SubBorealForestBiome {
         DefaultBiomeFeatures.addDefaultDisks(builder);
         //builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TreePlacedFeatures.BIRCH_CHECKED);
         //builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TreePlacedFeatures.SPRUCE_CHECKED);
-        BFBiomeFeatures.addSpruceTreesBF(builder);
-        BFBiomeFeatures.addBirchTreesBF(builder);
         DefaultBiomeFeatures.addForestFlowers(builder);
         DefaultBiomeFeatures.addDefaultFlowers(builder);
         DefaultBiomeFeatures.addForestGrass(builder);
