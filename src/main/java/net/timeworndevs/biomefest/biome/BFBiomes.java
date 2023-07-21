@@ -21,13 +21,15 @@ public class BFBiomes {
 
     //A lot of this is Traverse code, borrowed with permission from the devs.
     public static final RegistryKey<Biome> SUB_BOREAL_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Main.MODID, "sub_boreal_forest"));
+    public static final RegistryKey<Biome> WOODLANDS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Main.MODID, "woodlands"));
 
     public static final List<RegistryKey<Biome>> BIOMES = List.of(
-            SUB_BOREAL_FOREST
+            SUB_BOREAL_FOREST, WOODLANDS
     );
 
     public static void populate(FabricDynamicRegistryProvider.Entries entries){
         entries.add(SUB_BOREAL_FOREST, SubBorealForestBiome.create(entries));
+        entries.add(WOODLANDS, WoodlandBiome.create(entries));
     }
 
     public static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings){

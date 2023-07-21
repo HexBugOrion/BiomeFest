@@ -15,4 +15,8 @@ public class BFBiomeFeatures {
     public static void addBirchTreesBF(GenerationSettings.LookupBackedBuilder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_BIRCH);
     }
+
+    public static void addOnlyOaks(GenerationSettings.LookupBackedBuilder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION);
+    }
 }
