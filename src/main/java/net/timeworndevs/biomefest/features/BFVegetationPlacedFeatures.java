@@ -10,8 +10,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.placementmodifier.*;
 import net.timeworndevs.biomefest.Main;
 
 import java.util.ArrayList;
@@ -24,14 +24,18 @@ public class BFVegetationPlacedFeatures {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Main.MODID, name));
     }
 
-    public static PlacedFeature placeTreeFeature(FabricDynamicRegistryProvider.Entries entries, int count, BlockPredicate predicate, RegistryKey<ConfiguredFeature<?,?>> feature) {
-
+    public static PlacedFeature placeTreeFeature(FabricDynamicRegistryProvider.Entries entries, int count, int maxWaterDepth, BlockPredicate predicate, RegistryKey<ConfiguredFeature<?,?>> feature) {
+        return placeFeature(entries, feature, PlacedFeatures.createCountExtraModifier(count, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, SurfaceWaterDepthFilterPlacementModifier.of(maxWaterDepth), BlockFilterPlacementModifier.of(predicate));
     }
 
     private static PlacedFeature placeFeature(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?,?>> feature, PlacementModifier... placementModifiers) {
         List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
         list.add(BiomePlacementModifier.of());
         return placeFeature(entries, feature, list);
+    }
+
+    private static PlacedFeature placeFeature(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> list) {
+        return new PlacedFeature(entries.ref(feature), list);
     }
 
     public static void populate(FabricDynamicRegistryProvider.Entries entries) {
