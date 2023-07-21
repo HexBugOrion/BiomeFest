@@ -21,5 +21,6 @@ public class BFBiomeTagProvider extends FabricTagProvider<Biome> {
     @Override
     public void configure(RegistryWrapper.WrapperLookup registries) {
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_FOREST.id())).addOptional(BFBiomes.SUB_BOREAL_FOREST);
+        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_FOREST.id())).addOptional(BFBiomes.WOODLANDS);
     }
 }

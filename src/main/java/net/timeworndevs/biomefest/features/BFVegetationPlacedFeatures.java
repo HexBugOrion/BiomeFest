@@ -11,6 +11,7 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.timeworndevs.biomefest.Main;
 
@@ -20,6 +21,13 @@ import java.util.List;
 public class BFVegetationPlacedFeatures {
     public static final RegistryKey<PlacedFeature> TREES_ONLY_OAK = createRegistryKey("trees_only_oak");
 
+    public static void populate(FabricDynamicRegistryProvider.Entries entries) {
+        final BlockPredicate ON_DIRT = BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT);
+        final BlockPredicate ON_SAND = BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.SAND);
+        final BlockPredicate ON_DIRT_OR_SAND = BlockPredicate.anyOf(ON_DIRT, ON_SAND);
+
+        entries.add(TREES_ONLY_OAK, placeTreeFeature(entries, 2, 0, ON_DIRT, TreeConfiguredFeatures.OAK));
+    }
     public static RegistryKey<PlacedFeature> createRegistryKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Main.MODID, name));
     }
@@ -36,13 +44,5 @@ public class BFVegetationPlacedFeatures {
 
     private static PlacedFeature placeFeature(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> list) {
         return new PlacedFeature(entries.ref(feature), list);
-    }
-
-    public static void populate(FabricDynamicRegistryProvider.Entries entries) {
-        final BlockPredicate ON_DIRT = BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT);
-        final BlockPredicate ON_SAND = BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.SAND);
-        final BlockPredicate ON_DIRT_OR_SAND = BlockPredicate.anyOf(ON_DIRT, ON_SAND);
-
-        entries.add(TREES_ONLY_OAK, )
     }
 }

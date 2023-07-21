@@ -8,6 +8,7 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.timeworndevs.biomefest.features.BFBiomeFeatures;
 
 import static net.timeworndevs.biomefest.biome.BFBiomes.addBasicFeatures;
 
@@ -23,7 +24,7 @@ public class WoodlandBiome {
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
         DefaultBiomeFeatures.addForestFlowers(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, entries.ref());
+        BFBiomeFeatures.addOnlyOaks(builder);
         DefaultBiomeFeatures.addDefaultFlowers(builder);
         DefaultBiomeFeatures.addForestGrass(builder);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);

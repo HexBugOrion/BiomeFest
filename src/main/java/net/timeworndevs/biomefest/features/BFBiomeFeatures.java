@@ -17,6 +17,6 @@ public class BFBiomeFeatures {
     }
 
     public static void addOnlyOaks(GenerationSettings.LookupBackedBuilder builder) {
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BFVegetationPlacedFeatures.TREES_ONLY_OAK);
     }
 }
