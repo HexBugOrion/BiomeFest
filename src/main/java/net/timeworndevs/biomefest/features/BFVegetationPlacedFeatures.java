@@ -2,16 +2,16 @@ package net.timeworndevs.biomefest.features;
 
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
+import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.timeworndevs.biomefest.Main;
 
@@ -28,6 +28,15 @@ public class BFVegetationPlacedFeatures {
 
         entries.add(TREES_ONLY_OAK, placeTreeFeature(entries, 2, 0, ON_DIRT, TreeConfiguredFeatures.OAK));
     }
+
+    public static void bootstrap(Registerable<ConfiguredFeature> featureRegisterable) {
+
+        RegistryEntryLookup<ConfiguredFeature<?,?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+
+        RegistryEntry<ConfiguredFeature<?,?>> registryEntry = registryEntryLookup.getOrThrow(BFVegetationConfiguredFeatures.TREES_ONLY_OAKS);
+
+    }
+
     public static RegistryKey<PlacedFeature> createRegistryKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Main.MODID, name));
     }
