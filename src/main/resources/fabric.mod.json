@@ -23,7 +23,10 @@
     ],
     "fabric-datagen": [
       "net.timeworndevs.bf_datagen.DataGenMain"
-    ]
+    ],
+    "terrablender": [
+      "net.timeworndevs.biomefest.TerraBlender"
+]
   },
   "mixins": [
   ],
