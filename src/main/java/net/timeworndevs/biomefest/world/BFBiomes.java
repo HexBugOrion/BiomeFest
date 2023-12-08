@@ -56,8 +56,11 @@ public class BFBiomes {
         DefaultBiomeFeatures.addTaigaTrees(biomeBuilder);
         return new Biome.Builder()
                 .temperature(0.6f)
+                .temperatureModifier(Biome.TemperatureModifier.NONE)
                 .downfall(0.6f)
                 .precipitation(true)
+                .generationSettings(biomeBuilder.build())
+                .spawnSettings(spawnSettings.build())
                 .effects((new BiomeEffects.Builder()
                         .skyColor(8037887)
                         .fogColor(12638463)
