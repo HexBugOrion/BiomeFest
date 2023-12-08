@@ -1,7 +1,7 @@
 package net.timeworndevs.biomefest;
 
 import net.fabricmc.api.ModInitializer;
-import net.timeworndevs.biomefest.registry.BlockRegistry;
+import net.timeworndevs.biomefest.common.CommonBlockRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,15 +19,13 @@ public class Main implements ModInitializer {
 		LOGGER.info("Items Registered");
 
 		LOGGER.info("BlockRegistry Starting");
-		BlockRegistry.blockRegistry();
+		CommonBlockRegistry.blockRegistry();
 		LOGGER.info("Blocks Registered");
 
 		LOGGER.info("FeatureRegistry Starting");
-		BFConfiguredFeatures.register();
 		LOGGER.info("Features Registered");
 
 		LOGGER.info("BiomeRegistry Staring");
-		BiomeRegistry.biomeRegistry();
 		LOGGER.info("Biomes Registered");
 	}
 }
